@@ -12,32 +12,25 @@ This development stack includes Symfony 5/Webpack Encore, MySQL, Apache and PHP 
 ## Installation
 1. Clone the repository, build services and create/Start containers:
 ```sh
-$ git clone https://github.com/arthur2050/test_full_stack.git
-$ cd test_full_stack
+$ git clone https://github.com/arthur2050/test_tile_expert.git
+$ cd test_tile_expert
 $ docker-compose build
 $ docker-compose up -d
+$ docker-compose exec php php bin/console doctrine:schema:create
+$ docker-compose exec php php bin/console doctrine:migrations:migrate
+$ docker-compose exec php php bin/console doctrine:fixtures:load
+
 ```
 
-2. Visit http://127.0.0.1:8080/
+2. Visit http://127.0.0.1:8081/main
 
-3. Install additional frontend dependencies and watch for changes: 
-```sh
-$ docker-compose exec php yarn
-$ docker-compose exec php yarn watch
-```
-
-4. Docker Dashboard main info: 
+3. Docker Dashboard main info: 
 
 ![Docker Images](.doc/docker-images.png)
 ![Docker Containers](.doc/docker-containers.png)
 
-5. Make migrations:
+4. Make migrations:
 
-docker-compose exec php php bin/console doctrine:migrations:migrate
-
-6. Create test user:
-
-docker-compose exec php php bin/console add-test-user
 
 ## Folders structure
 
