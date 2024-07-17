@@ -1,0 +1,21 @@
+{# Вывод пагинации #}
+<table>
+    <thead>
+    <tr>
+        <th>Группировка по:</th>
+        <th>Количество заказов:</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in pagination.items %}
+        <tr>
+            <td>{{ order.time }}</td>
+            <td>{{ order.orderCount }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    {{ knp_pagination_render(pagination) }}
+</div>

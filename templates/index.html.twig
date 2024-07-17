@@ -1,5 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Hello!
+    <h2>Endpoint 1: вставка различных параметров в url:
+        https://tile.expert/fr/tile/cobsa/manual/a/manu7530bcbm-manualbaltic7-5x30
+    </h2>
+    <div style="margin: 20px auto">
+        {{ form(form_main_route) }}
+    </div>
+
+    <h2>Endpoint 2: запрос с пагинацией (страница, количество на странице) и группировкой.
+    </h2>
+    <div style="margin: 20px auto">
+        <p>
+            Отдать json с количеством заказов по месяцам, годам, дням
+        </p>
+        {{ form(form_order_list) }}
+    </div>
+
+    <h2>Endpoint 4:
+        получение одного заказа(возвращаю json)
+    </h2>
+    <div style="margin: 20px auto">
+        {{ form(form_order_show) }}
+    </div>
 {% endblock %}

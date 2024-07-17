@@ -1,4 +1,12 @@
 <?php
+/**
+ * @author    Arthur Patsanovskiy <arthur2050@mail.ru>
+ * @copyright Copyright (c) 2024, Darvin Digital
+ * @link      https://darvindigital.ru/
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace App\Entity;
 
@@ -38,13 +46,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
+     * @var int|null
+     *
+     * @ORM\Column(type="smallint", nullable=true)
      */
-    private $comments;
+    private $sex;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $surname;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $companyName;
 
     public function __construct()
     {
-        $this->comments = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,31 +168,81 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Comment>
+     * @return int|null
      */
-    public function getComments(): Collection
+    public function getSex(): ?int
     {
-        return $this->comments;
+        return $this->sex;
     }
 
-    public function addComment(Comment $comment): self
+    /**
+     * @param int|null $sex
+     *
+     * @return User
+     */
+    public function setSex(?int $sex): self
     {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-            $comment->setUser($this);
-        }
+        $this->sex = $sex;
 
         return $this;
     }
 
-    public function removeComment(Comment $comment): self
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
     {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getUser() === $this) {
-                $comment->setUser(null);
-            }
-        }
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     *
+     * @return User
+     */
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    /**
+     * @param string|null $surname
+     *
+     * @return User
+     */
+    public function setSurname(?string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCompanyName(): ?string
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @param string|null $companyName
+     *
+     * @return User
+     */
+    public function setCompanyName(?string $companyName): self
+    {
+        $this->companyName = $companyName;
 
         return $this;
     }
