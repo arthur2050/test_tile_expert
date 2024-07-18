@@ -16,7 +16,6 @@ $ git clone https://github.com/arthur2050/test_tile_expert.git
 $ cd test_tile_expert
 $ docker-compose build
 $ docker-compose up -d
-$ docker-compose exec php php bin/console doctrine:schema:create
 $ docker-compose exec php php bin/console doctrine:migrations:migrate
 $ docker-compose exec php php bin/console doctrine:fixtures:load
 
